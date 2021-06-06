@@ -5,12 +5,12 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
-const authRoute = require("./routes/auth");
+const thoughtRoute = require("./routes/thought");
 
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true },()=>{
-    console.log("you are connected to MongoDB")
+    console.log("Nate you are awesome, you are connected to MongoDB")
 });
 
 // adding middleware section , parses posts
@@ -19,10 +19,10 @@ app.use(helmet());  //for security
 app.use(morgan("common"));
 
 app.use("/api/users" , userRoute);
-
+app.use("/api/thought" , thoughtRoute);
 
 
 
 app.listen(8800,()=>{
-    console.log("nate your server is running")
+    console.log("Nate your server is running, you da' nodemon")
 })
