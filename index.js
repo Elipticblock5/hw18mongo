@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const helmet = require("helmet");
+
 const morgan = require("morgan");
 const userRoute = require("./routes/users");
 const thoughtRoute = require("./routes/thought");
@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopolo
 
 // adding middleware section , parses posts
 app.use(express.json());
-app.use(helmet());  //for security
+
 app.use(morgan("common"));
 
 app.use("/api/users" , userRoute);

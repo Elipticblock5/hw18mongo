@@ -1,11 +1,13 @@
-const mongooes = require("mongoose");
+const mongoose = require("mongoose");
+const {Schema, model} = require("mongoose");
+
 
 const UserSchema = new mongoose.Schema({
     username:{
         type:String,
         require: true,
-        min:3,
-        max:20,
+        // not needed min:3,
+        // not neeed max:20,
         unique:true,
         trim: true
     },
@@ -13,18 +15,18 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required: true,
         max: 50,
-        unique: [true, 'Email is needed.']
+        unique: [true, 'You have to enter an email.']
     },
    thoughts: [
        {
-           type: Schema.Types.ObjectId,
-           ref: Thought
+           type: mongoose.Schema.Types.ObjectId,
+           ref: "thought"
        }
    ],
    friends: [
        {
-           type: Schema.Types.ObjectId,
-           ref: 'User'
+           type: mongoose.Schema.Types.ObjectId,
+           ref: 'user'
        }
    ]
 },
@@ -35,6 +37,10 @@ const UserSchema = new mongoose.Schema({
     id:false
 }
 );
+
+
+
+// assingment criteria Schame setting 'firndCount
 
 
 UserSchema.virtual('friendCount').get(function() {

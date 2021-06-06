@@ -1,10 +1,14 @@
-const mongooes = require("mongoose");
+
 const dateFormat = require('../utils/dateFormat');
+const mongoose = require("mongoose");
+const {Schema, model} = require("mongoose");
 
 const userReactionSchema = new mongoose.Schema({
+   //laid out per assignment criteria
+   
     recationId:{
-        type: mongooes.Schema.Types.ObjectId,
-        default: () => new mongooes.Types.ObjectId()
+        type: mongoose.Schema.Types.ObjectId,
+        default: () => new mongoose.Types.ObjectId()
     },
 
     reactionBody:{
@@ -37,13 +41,13 @@ const userReactionSchema = new mongoose.Schema({
 );
 
 
-const ThoughtSchema = new mongooes.Schema(
+const ThoughtSchema = new mongoose.Schema(
     {
         thoughtText: {
             type:String,
             required: 'if you have a thought, you gotta share!',
             minlenght: 1, 
-            maxLength: 300
+            maxLength: 280 //280 per assingment criters
         },
 
         createdAt: {
@@ -58,7 +62,7 @@ const ThoughtSchema = new mongooes.Schema(
 
         },
 
-        reactions: [ReactionSchema],
+        reactions: [userReactionSchema],
     },
 
     {
