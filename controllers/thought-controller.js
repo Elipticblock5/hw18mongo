@@ -5,7 +5,7 @@ const thoughtControllers = {
 //get all thoughts via api route
 
   getAllTheThought(req, res) {
-    Thought.find({})
+    thought.find({})
     .populate({
       path: 'reactions',
       select: '-__v'
