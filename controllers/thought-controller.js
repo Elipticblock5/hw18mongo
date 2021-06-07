@@ -45,7 +45,7 @@ const thoughtControllers = {
     },
 
   //create a thought function
-    createThought({ body }, res) {
+    createNewThought({ body }, res) {
         thought.create(body)
         .then(({ _id }) => {
         return User.findOneAndUpdate(
@@ -133,7 +133,7 @@ const thoughtControllers = {
 
 
      removeUserReaction({ params }, res){
-        rhought.findOneAndUpdate({ _id: params.thoughtId}, { $pull: {reactionId: params.reactionId} }, {new: true })
+        thought.findOneAndUpdate({ _id: params.thoughtId}, { $pull: {reactionId: params.reactionId} }, {new: true })
         .then(dbThoughtData => {
           if (!dbThoughtData) {
             res.status(404).json({ message: 'Cant remove, no id found'});

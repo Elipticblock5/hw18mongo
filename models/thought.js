@@ -41,13 +41,13 @@ const userReactionSchema = new mongoose.Schema({
 );
 
 
-const ThoughtSchema = new mongoose.Schema(
+const thoughtSchema = new mongoose.Schema(
     {
         thoughtText: {
             type:String,
             required: 'if you have a thought, you gotta share!',
             minlenght: 1, 
-            maxLength: 280 //280 per assingment criters
+            maxLength: 280 //280 per assingment criterias
         },
 
         createdAt: {
@@ -75,10 +75,10 @@ const ThoughtSchema = new mongoose.Schema(
     }
 );
 
-ThoughtSchema.virtual('reactionCount').get(function() {
+thoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;
   });
 
-const thought = model('thought', ThoughtSchema);
+const thought = model('thought', thoughtSchema);
 
 module.exports = thought;

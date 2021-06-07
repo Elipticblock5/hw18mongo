@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const {Schema, model} = require("mongoose");
 
 
-const UserSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username:{
         type:String,
         require: true,
         // not needed min:3,
-        // not neeed max:20,
+        // not needed max:20,
         unique:true,
         trim: true
     },
@@ -43,11 +43,11 @@ const UserSchema = new mongoose.Schema({
 // assingment criteria Schame setting 'firndCount
 
 
-UserSchema.virtual('friendCount').get(function() {
+userSchema.virtual('friendCount').get(function() {
     return this.friends.length;
 });
 
-const user = model('user', UserSchema);
+const user = model('user', userSchema);
 
 module.exports = user;
 
