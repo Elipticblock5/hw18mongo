@@ -44,7 +44,7 @@ const thoughtControllers = {
         });
     },
 
-  
+  //create a thought function
     createThought({ body }, res) {
         thought.create(body)
         .then(({ _id }) => {

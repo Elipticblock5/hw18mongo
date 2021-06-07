@@ -1,3 +1,5 @@
+//used askBCS ticket to assist with userControllers routing
+
 const userControllers = require("../../controllers/user-controller");
 
 const router = require("express").Router();
