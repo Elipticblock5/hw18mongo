@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+//removed to fix server routing
+
 
 //const userRoute = require("./routes/users");
 //const thoughtRoute = require("./routes/api/thought");

@@ -67,7 +67,9 @@ const thoughtControllers = {
     },
 
 
- 
+ //function to update user thought
+
+
     updateUserThought({ params, body }, res) {
         thought.findOneAndUpdate({ _id: params.id }, body, { new: true, runValidators: true })
           .then(dbThoughtData => {
@@ -82,6 +84,8 @@ const thoughtControllers = {
           .catch(err => res.json(err));
       },
 
+
+      //function to delete user thoughts
 
     deleteUserThought({ params }, res) {
         thought.findOneAndDelete({ _id: params.id })
@@ -109,7 +113,8 @@ const thoughtControllers = {
         },
 
 
-    
+    // add a user rection funtion
+
     addUserReaction({ params, body }, res){
         thought.findOneAndUpdate({ _id: params.thoughtId}, { $push: {reactions: body} }, {new: true, runValidators: true})
         .populate({path: 'reactions', select: '-__v'})
@@ -124,7 +129,9 @@ const thoughtControllers = {
         .catch(err => res.status(400).json(err));
     },
 
-     
+     // remove a reaction
+
+
      removeUserReaction({ params }, res){
         rhought.findOneAndUpdate({ _id: params.thoughtId}, { $pull: {reactionId: params.reactionId} }, {new: true })
         .then(dbThoughtData => {
@@ -139,5 +146,6 @@ const thoughtControllers = {
   
   
   };
+  
   
   module.exports = thoughtControllers
