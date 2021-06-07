@@ -14,6 +14,8 @@ const userControllers = {
         });
     },
 
+    //find one user by id
+
     getUserID({ params }, res) {
         user.findOne({ _id: params.id })
         .populate({

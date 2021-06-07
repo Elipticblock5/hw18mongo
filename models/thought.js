@@ -1,7 +1,7 @@
 
 const dateFormat = require('../utils/dateFormat');
 const mongoose = require("mongoose");
-const {Schema, model} = require("mongoose");
+const { Schema, model, Types} = require("mongoose");
 
 const userReactionSchema = new mongoose.Schema({
    //laid out per assignment criteria
