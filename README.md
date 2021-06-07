@@ -29,9 +29,12 @@ Insomnia
 
 ## Instructions
 
-MongoDB, Mongooes, Node.js, express needed
+MongoDB, Mongoose, Node.js, express needed
+
 run npm init
+
 npm i
+
 npm start to start server
 
 ## Questions
