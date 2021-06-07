@@ -1,28 +1,49 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 
-const morgan = require("morgan");
-const userRoute = require("./routes/users");
-const thoughtRoute = require("./routes/thought");
 
-dotenv.config();
+//const userRoute = require("./routes/users");
+//const thoughtRoute = require("./routes/api/thought");
 
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true },()=>{
+
+const PORT = process.env.PORT || 8800;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+
+
+
+app.use(require('./routes'));
+
+
+
+
+
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/hw18mongo', {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+
+},()=>{
     console.log("Nate you are awesome, you are connected to MongoDB")
 });
 
+
+mongoose.set('debug', true);
+
 // adding middleware section , parses posts
-app.use(express.json());
-
-app.use(morgan("common"));
-
-app.use("/api/users" , userRoute);
-app.use("/api/thought" , thoughtRoute);
+//app.use(express.json());
 
 
 
-app.listen(8800,()=>{
-    console.log("Nate your server is running, you da' nodemon")
-})
+mongoose.set('debug', true);
+
+
+app.use(require('./routes'));
+
+
+
+app.listen(PORT, () => console.log(`Nate you are connected on localhost: ${PORT}`));
