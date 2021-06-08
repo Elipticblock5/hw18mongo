@@ -51,7 +51,7 @@ const userControllers = {
     //updating user its _id
 
     updateTheUser({ params, body }, res) {
-        user.FindOneAndUpdate({ _id: params.id } , body, { new: true, runValidators: true })
+        user.findOneAndUpdate({ _id: params.id } , body, { new: true, runValidators: true })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'Wait, No user was found with this id!!'});
@@ -69,7 +69,7 @@ const userControllers = {
     deleteTheUser({ params }, res) {
         thought.deleteMany({ userId: params.id })
           .then(() => {
-            User.findOneAndDelete({ userId: params.id })
+            user.findOneAndDelete({ userId: params.id })
     
           .then(dbUserData => {
             if (!dbUserData) {

@@ -13,23 +13,23 @@ const {
 router
     .route('/')
     .get(getAllTheThought)
-    .post(createNewThought)
+    .post(createNewThought);
 
 //by id
 router
  .route('/:id')
  .get(getThoughtById)
  .put(updateUserThought)
-.delete(deleteUserThought)
+.delete(deleteUserThought);
 
 //routes for reaction
 
 router
     .route("/:thoughtId/reactions")
-    .post(addUserReaction)
+    .post(addUserReaction);
 router
     .route('/:thoughtId/reactions/:reactionId')
-    .delete(removeUserReaction)
+    .delete(removeUserReaction);
 
 /*router.get("/",(req,res)=>{
     res.send("you are now using the thought route")
