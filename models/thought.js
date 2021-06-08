@@ -1,9 +1,9 @@
 
 const dateFormat = require('../utils/dateFormat');
-const mongoose = require("mongoose");
+
 const { Schema, model, Types} = require("mongoose");
 
-const reactionSchema = new mongoose.Schema({
+const reactionSchema = new Schema({
    //laid out per assignment criteria
    
     recationId:{
@@ -41,7 +41,7 @@ const reactionSchema = new mongoose.Schema({
 );
 
 
-const thoughtSchema = new mongoose.Schema(
+const thoughtSchema = new Schema(
     {
         thoughtText: {
             type:String,

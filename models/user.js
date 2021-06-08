@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+
 const {Schema, model} = require("mongoose");
 //adding date format
 const dateFormat = require('../utils/dateFormat');
