@@ -4,7 +4,7 @@ const {Schema, model} = require("mongoose");
 const dateFormat = require('../utils/dateFormat');
 
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     username:{
         type:String,
         require: true,
