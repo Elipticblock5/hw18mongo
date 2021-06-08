@@ -67,9 +67,9 @@ const userControllers = {
 
 
     deleteTheUser({ params }, res) {
-        thought.deleteMany({ userId: params.id })
+        thought.deleteMany({ _id: params.id })
           .then(() => {
-            user.findOneAndDelete({ userId: params.id })
+            user.findOneAndDelete({ _id: params.id })
     
           .then(dbUserData => {
             if (!dbUserData) {
