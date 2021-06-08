@@ -2,6 +2,7 @@
 const dateFormat = require('../utils/dateFormat');
 
 const { Schema, model, Types} = require("mongoose");
+let mongoose = require("mongoose");
 
 const reactionSchema = new Schema({
    //laid out per assignment criteria

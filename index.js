@@ -49,4 +49,4 @@ mongoose.set('debug', true);
 
 
 
-app.listen(PORT, () => console.log(`Nate you are connected on localhost: ${PORT}`));
+app.listen(PORT, () => console.log(`Nate, big congrats you are connected on localhost: ${PORT}`));

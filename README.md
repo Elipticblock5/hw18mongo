@@ -19,20 +19,37 @@ ISC License
 ## Technology
 
 JavaScript
+
 JSON
+
 Node.js
+
 Express.js
+
 Nodemon
+
 Mongoose
+
 MongoDB
+
 Insomnia
 
 ## Instructions
 
-MongoDB, Mongooes, Node.js, express needed
-run npm init
+Needed:
+
+MongoDB
+Mongoose
+Node.js
+Express
+
+run:
+
+npm init
 npm i
-npm start to start server
+npm start
+
+to start server
 
 ## Questions
 
