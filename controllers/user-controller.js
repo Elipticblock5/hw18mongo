@@ -86,7 +86,7 @@ const userControllers = {
  // add a fiend to a users friend list
 
  addTheFriend({ params }, res){
-    User.findOneAndUpdate({ _id: params.userId}, { $push: {friends: params.friendId} }, {new: true})
+    user.findOneAndUpdate({ _id: params.userId}, { $push: {friends: params.friendId} }, {new: true})
     .then(dbUserData => {
         if(!dbUserData) {
             res.status(404).json({ message: "Cannot add the friend, the id was not found"});
@@ -101,7 +101,7 @@ const userControllers = {
 //funciton to deltee friend
 
 deleteTheFriend({ params }, res) {
-    User.findOneAndUpdate(
+    user.findOneAndUpdate(
       { _id: params.userId },
       { $pull: { friends: params.friendId } },
       { new: true }
