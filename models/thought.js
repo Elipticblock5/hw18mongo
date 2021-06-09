@@ -45,7 +45,7 @@ const reactionSchema = new Schema({
 const thoughtSchema = new Schema(
     {
         thoughtText: {
-            type:String,
+            type: String,
             required: 'if you have a thought, you gotta share!',
             minlenght: 1, 
             maxLength: 280 //280 per assingment criterias
