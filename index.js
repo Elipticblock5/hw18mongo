@@ -18,7 +18,6 @@ app.use(express.static('public'));
 
 
 
-app.use(require('./routes'));
 
 
 
@@ -36,16 +35,18 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/hw18mongo', {
 
 mongoose.set('debug', true);
 
-// adding middleware section , parses posts
-//app.use(express.json());
+
+app.use(require('./routes'));
+
+
 
 
 
 mongoose.set('debug', true);
 
 
-app.use(require('./routes'));
 
 
 
-app.listen(PORT, () => console.log(`Nate you are connected on localhost: ${PORT}`));
+
+app.listen(PORT, () => console.log(`Nate, big congrats you are connected on localhost: ${PORT}`));

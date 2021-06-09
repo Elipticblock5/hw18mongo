@@ -1,11 +1,9 @@
 const router = require('express').Router();
-const apiRoutes = require('./api');
+const userRoutes = require('./user-route');
+const thoughtRoutes = require('./thought-route');
 
-router.use('/api', apiRoutes);
-
-router.use((req, res) => {
-    res.status(404).send('<h2>Sorry you have a 404 error nate</h2>');
-  });
+router.use('/user', userRoutes);
+router.use('/thought', thoughtRoutes);
 
 
 module.exports = router;

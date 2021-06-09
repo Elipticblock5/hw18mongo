@@ -1,9 +1,10 @@
 
 const dateFormat = require('../utils/dateFormat');
-const mongoose = require("mongoose");
-const { Schema, model, Types} = require("mongoose");
 
-const userReactionSchema = new mongoose.Schema({
+const { Schema, model, Types} = require("mongoose");
+let mongoose = require("mongoose");
+
+const reactionSchema = new Schema({
    //laid out per assignment criteria
    
     recationId:{
@@ -20,13 +21,13 @@ const userReactionSchema = new mongoose.Schema({
 
     username: {
         type: String,
-        required: 'You need a username, nothing anons here!'
+        required: 'You need a username, nothing anonymous here!'
     },
 
     createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtValue => dateFormat(createdAtValue)
+        get: createdAtVal => dateFormat(createdAtVal)
     }
 },
 
@@ -41,10 +42,10 @@ const userReactionSchema = new mongoose.Schema({
 );
 
 
-const thoughtSchema = new mongoose.Schema(
+const thoughtSchema = new Schema(
     {
         thoughtText: {
-            type:String,
+            type: String,
             required: 'if you have a thought, you gotta share!',
             minlenght: 1, 
             maxLength: 280 //280 per assingment criterias
@@ -53,7 +54,7 @@ const thoughtSchema = new mongoose.Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: createdAtValue => dateFormat(createdAtValue)
+            get: createdAtVal => dateFormat(createdAtVal)
         },
 
         username: {
@@ -61,8 +62,8 @@ const thoughtSchema = new mongoose.Schema(
             required: 'You have to have a username, no anons here'
 
         },
-
-        reactions: [userReactionSchema],
+        // use reactions Schema to validate for a reply
+        reactions: [reactionSchema],
     },
 
     {

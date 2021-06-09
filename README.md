@@ -8,7 +8,7 @@
 
 Built a REST API using Mongo and Express for social media backend.
 
-[Walkthrough Video Link](https://www.youtube.com/watch?v=KnazuDCzUNM)
+[Walkthrough Video Link](https://www.youtube.com/watch?v=X5d1MYNaAUM)
 
 ## Table of Contents
 
@@ -19,23 +19,37 @@ ISC License
 ## Technology
 
 JavaScript
+
 JSON
+
 Node.js
+
 Express.js
+
 Nodemon
+
 Mongoose
+
 MongoDB
+
 Insomnia
 
 ## Instructions
 
-MongoDB, Mongoose, Node.js, express needed
+Needed:
 
-run npm init
+MongoDB
+Mongoose
+Node.js
+Express
 
+run:
+
+npm init
 npm i
+npm start
 
-npm start to start server
+to start server
 
 ## Questions
 

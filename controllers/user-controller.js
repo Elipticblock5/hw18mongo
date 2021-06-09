@@ -51,7 +51,7 @@ const userControllers = {
     //updating user its _id
 
     updateTheUser({ params, body }, res) {
-        user.FindOneAndUpdate({ _id: params.id } , body, { new: true, runValidators: true })
+        user.findOneAndUpdate({ _id: params.id } , body, { new: true, runValidators: true })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({ message: 'Wait, No user was found with this id!!'});
@@ -67,9 +67,9 @@ const userControllers = {
 
 
     deleteTheUser({ params }, res) {
-        thought.deleteMany({ userId: params.id })
+        thought.deleteMany({ _id: params.id })
           .then(() => {
-            User.findOneAndDelete({ userId: params.id })
+            user.findOneAndDelete({ _id: params.id })
     
           .then(dbUserData => {
             if (!dbUserData) {
@@ -86,7 +86,7 @@ const userControllers = {
  // add a fiend to a users friend list
 
  addTheFriend({ params }, res){
-    User.findOneAndUpdate({ _id: params.userId}, { $push: {friends: params.friendId} }, {new: true})
+    user.findOneAndUpdate({ _id: params.userId}, { $push: {friends: params.friendId} }, {new: true})
     .then(dbUserData => {
         if(!dbUserData) {
             res.status(404).json({ message: "Cannot add the friend, the id was not found"});
@@ -101,7 +101,7 @@ const userControllers = {
 //funciton to deltee friend
 
 deleteTheFriend({ params }, res) {
-    User.findOneAndUpdate(
+    user.findOneAndUpdate(
       { _id: params.userId },
       { $pull: { friends: params.friendId } },
       { new: true }

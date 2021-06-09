@@ -20,35 +20,37 @@ const thoughtControllers = {
   },
 
 
+  getThoughtById({ params }, res) {
+    console.log(params.id)
+          thought.findOne({ _id: params.id })
+           .populate({
+            path: 'reactions',
+            select: '-__v'
+          })
+           .select('-__v')
+           .sort({ _id: -1 })
+           .then(dbThoughtData => {
+            if (!dbThoughtData) {
+                res.status(404).json({ message: 'Disaster, no thought found by this id' });
+                return;
+              }
+              res.json(dbThoughtData);
+            })
+    
+            //catch err
+            .catch(err => {
+              console.log(err);
+              res.status(400).json(err);
+            });
+        },
 
-    getThoughtById({ params }, res) {
-      thought.findOne({ _id: params.id })
-       .populate({
-        path: 'reactions',
-        select: '-__v'
-      })
-       .select('-__v')
-       .sort({ _id: -1 })
-       .then(dbThoughtData => {
-        if (!dbThoughtData) {
-            res.status(404).json({ message: 'Disaster, no thought found by this id' });
-            return;
-          }
-          res.json(dbThoughtData);
-        })
-
-        //catch err
-        .catch(err => {
-          console.log(err);
-          res.status(400).json(err);
-        });
-    },
+    
 
   //create a thought function
     createNewThought({ body }, res) {
         thought.create(body)
         .then(({ _id }) => {
-        return User.findOneAndUpdate(
+        return user.findOneAndUpdate(
             { _id: body.userId },
             { $push: { thought: _id } },
             { new: true }

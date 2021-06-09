@@ -1,8 +1,10 @@
-const mongoose = require("mongoose");
+
 const {Schema, model} = require("mongoose");
+//adding date format
+const dateFormat = require('../utils/dateFormat');
 
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     username:{
         type:String,
         require: true,
@@ -19,13 +21,13 @@ const userSchema = new mongoose.Schema({
     },
    thoughts: [
        {
-           type: mongoose.Schema.Types.ObjectId,
+           type: Schema.Types.ObjectId,
            ref: "thought"
        }
    ],
    friends: [
        {
-           type: mongoose.Schema.Types.ObjectId,
+           type: Schema.Types.ObjectId,
            ref: 'user'
        }
    ]
@@ -33,7 +35,9 @@ const userSchema = new mongoose.Schema({
 {
     toJson: {
         virtuals: true,
+        getters: true
     },
+     // prevents virtuals from creating duplicate of _id as `id`
     id:false
 }
 );
