@@ -8,7 +8,7 @@
 
 Built a REST API using Mongo and Express for social media backend.
 
-[Walkthrough Video Link](https://www.youtube.com/watch?v=KnazuDCzUNM)
+[Walkthrough Video Link](https://www.youtube.com/watch?v=X5d1MYNaAUM)
 
 ## Table of Contents
 
